@@ -554,13 +554,13 @@ const FileUpload = ({ onAnalysisComplete, onLoading, onError, loading = false })
               <div className="font-mono" style={{ fontSize: '0.62rem', color: '#4A5550', letterSpacing: '0.08em', lineHeight: 1.7 }}>
                 {loading
                   ? 'Running graph analysis · scoring suspicious accounts · detecting rings'
-                  : 'Expected columns: id · from_account · to_account · amount · timestamp'}
+                  : 'Expected columns: transaction_id · sender_id · receiver_id · amount · timestamp'}
               </div>
 
               {/* Column chips */}
               {!loading && !isDragging && (
                 <div style={{ display: 'flex', gap: 6, justifyContent: 'center', flexWrap: 'wrap', marginTop: 18 }}>
-                  {['id', 'from_account', 'to_account', 'amount', 'timestamp'].map(col => (
+                  {['transaction_id', 'sender_id', 'receiver_id', 'amount', 'timestamp'].map(col => (
                     <span key={col} className="font-mono" style={{
                       fontSize: '0.55rem', color: '#C9A84C',
                       background: 'rgba(201,168,76,0.08)',
