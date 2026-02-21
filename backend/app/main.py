@@ -109,7 +109,7 @@ async def shutdown_event():
     close_mongodb_connection()
 
 
-@app.get("/api", tags=["Health"])
+@app.get("/", tags=["Health"])
 async def health_check():
     """Health check endpoint"""
     return {"status": "healthy", "service": "RIFT Money Muling Detection Engine"}
