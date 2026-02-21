@@ -19,7 +19,7 @@
 }
 
 .recommendations-list h4::before {
-  content: '📋';
+  content: '';
   font-size: 18px;
 }
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getCycleAnalysis } from '../services/api'
+import RefreshIcon from './icons/RefreshIcon'
 
 function CycleAnalysisPanel({ analysisId, ringIndex }) {
   const [analysis, setAnalysis] = useState(null)
@@ -29,30 +30,37 @@ function CycleAnalysisPanel({ analysisId, ringIndex }) {
 
   if (loading) {
     return (
-      <div className="bg-purple-50 p-4 rounded-lg border border-purple-200 animate-pulse">
-        <div className="h-6 bg-purple-200 rounded mb-3"></div>
-        <div className="h-4 bg-purple-200 rounded mb-2"></div>
-        <div className="h-4 bg-purple-200 rounded w-4/5"></div>
+      <div className="bg-white/70 backdrop-blur-lg p-4 rounded-2xl border border-gray-200/60 shadow-xl animate-pulse">
+        <div className="h-6 bg-gray-200/80 rounded mb-3"></div>
+        <div className="h-4 bg-gray-200/70 rounded mb-2"></div>
+        <div className="h-4 bg-gray-200/70 rounded w-4/5"></div>
       </div>
     )
   }
 
   if (error) {
-    return <div className="bg-red-50 text-red-700 p-3 rounded-lg border border-red-200">{error}</div>
+    return <div className="bg-white/70 backdrop-blur-lg text-red-700 p-3 rounded-2xl border border-red-200/60 shadow-xl">{error}</div>
   }
 
   if (!analysis) return null
 
   return (
-    <div className="bg-purple-50 p-5 rounded-lg border border-purple-200 shadow-md">
-      <h3 className="text-lg font-bold text-purple-800 mb-4">🔄 Ring Analysis</h3>
-      
-      <div className="flex gap-2 mb-4 border-b border-purple-300">
+    <div className="bg-white/70 backdrop-blur-lg rounded-2xl border border-gray-200/60 shadow-xl overflow-hidden">
+      <div className="relative px-5 py-4 bg-gradient-to-r from-slate-900 via-violet-900 to-purple-700 text-white">
+        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:24px_24px]" />
+        <h3 className="relative text-base font-semibold flex items-center gap-2">
+          <RefreshIcon size={18} className="text-white" />
+          Ring Analysis
+        </h3>
+      </div>
+
+      <div className="p-5">
+      <div className="flex gap-2 mb-4 border-b border-gray-200/70">
         <button 
           className={`px-4 py-2 font-semibold text-sm transition-all ${
             activeTab === 'overview' 
-              ? 'bg-purple-600 text-white rounded-t' 
-              : 'text-purple-600 hover:bg-purple-100 rounded-t'
+              ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-t-xl' 
+              : 'text-purple-700 hover:bg-white/70 rounded-t-xl'
           }`}
           onClick={() => setActiveTab('overview')}
         >
@@ -61,8 +69,8 @@ function CycleAnalysisPanel({ analysisId, ringIndex }) {
         <button 
           className={`px-4 py-2 font-semibold text-sm transition-all ${
             activeTab === 'participants' 
-              ? 'bg-purple-600 text-white rounded-t' 
-              : 'text-purple-600 hover:bg-purple-100 rounded-t'
+              ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-t-xl' 
+              : 'text-purple-700 hover:bg-white/70 rounded-t-xl'
           }`}
           onClick={() => setActiveTab('participants')}
         >
@@ -71,8 +79,8 @@ function CycleAnalysisPanel({ analysisId, ringIndex }) {
         <button 
           className={`px-4 py-2 font-semibold text-sm transition-all ${
             activeTab === 'analysis' 
-              ? 'bg-purple-600 text-white rounded-t' 
-              : 'text-purple-600 hover:bg-purple-100 rounded-t'
+              ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-t-xl' 
+              : 'text-purple-700 hover:bg-white/70 rounded-t-xl'
           }`}
           onClick={() => setActiveTab('analysis')}
         >
@@ -80,7 +88,7 @@ function CycleAnalysisPanel({ analysisId, ringIndex }) {
         </button>
       </div>
 
-      <div className="bg-white p-4 rounded-lg border border-purple-200">
+      <div className="bg-white/70 p-4 rounded-xl border border-gray-200/70">
         {activeTab === 'overview' && (
           <div className="space-y-2">
             {analysis.ring_details && (
@@ -98,7 +106,7 @@ function CycleAnalysisPanel({ analysisId, ringIndex }) {
             {analysis.participants && analysis.participants.length > 0 ? (
               <ul className="space-y-2">
                 {analysis.participants.map((participant, idx) => (
-                  <li key={idx} className="bg-purple-100 px-3 py-2 rounded border border-purple-200">
+                  <li key={idx} className="bg-purple-50/70 px-3 py-2 rounded-xl border border-purple-200/60">
                     <span className="font-mono text-sm text-purple-900">{participant}</span>
                   </li>
                 ))}
@@ -118,6 +126,7 @@ function CycleAnalysisPanel({ analysisId, ringIndex }) {
             )}
           </div>
         )}
+      </div>
       </div>
     </div>
   )

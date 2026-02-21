@@ -169,7 +169,7 @@
   font-size: 13px;
   color: #212121;
   font-weight: 600;
-}
+  content: '';
 
 .risk-factors ul {
   list-style: none;
@@ -189,7 +189,7 @@
 }
 
 .risk-factors li::before {
-  content: '⚠️';
+  content: '';
   position: absolute;
   left: 0;
 }

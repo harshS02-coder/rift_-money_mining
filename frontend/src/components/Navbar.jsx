@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import LoginForm from './LoginForm'
+import SearchIcon from './icons/SearchIcon'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -39,7 +40,10 @@ const Navbar = () => {
               isScrolled ? 'text-blue-700' : 'text-white'
             }`}
           >
-            🔍 RIFT 2026
+            <span className="inline-flex items-center gap-2">
+              <SearchIcon size={20} className="text-current" />
+              Money Mining
+            </span>
           </button>
 
           {/* Desktop Navigation */}

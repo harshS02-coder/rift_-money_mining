@@ -4,7 +4,7 @@ import axios from 'axios'
 const getAPIBaseURL = () => {
   // Development: use Vite proxy
   if (process.env.NODE_ENV === 'development') {
-    console.log('📡 API Mode: Development (Vite proxy to localhost:8000)')
+    console.log('[API] Mode: Development (Vite proxy to localhost:8000)')
     return '/api'
   }
   
@@ -13,12 +13,12 @@ const getAPIBaseURL = () => {
     const raw = import.meta.env.VITE_API_URL
     const normalized = raw.endsWith('/') ? raw.slice(0, -1) : raw
     const withApi = normalized.endsWith('/api') ? normalized : `${normalized}/api`
-    console.log('📡 API Mode: Production (from VITE_API_URL)', withApi)
+    console.log('[API] Mode: Production (from VITE_API_URL)', withApi)
     return withApi
   }
   
   // Production fallback: Try relative path first (for same-origin deployments)
-  console.log('📡 API Mode: Production (attempting relative path /api)')
+  console.log('[API] Mode: Production (attempting relative path /api)')
   return '/api'
 }
 
