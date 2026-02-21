@@ -15,7 +15,7 @@ from app.services.auth_service import (
 from app.utils.jwt_utils import create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES
 from app.utils.auth_dependencies import get_current_user
 
-router = APIRouter(prefix="api/auth", tags=["Authentication"])
+router = APIRouter(prefix="/api/auth", tags=["Authentication"])
 
 
 @router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
