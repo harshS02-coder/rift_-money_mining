@@ -10,8 +10,11 @@ const getAPIBaseURL = () => {
   
   // Production: check for environment variable first
   if (import.meta.env.VITE_API_URL) {
-    console.log('📡 API Mode: Production (from VITE_API_URL)', import.meta.env.VITE_API_URL)
-    return import.meta.env.VITE_API_URL
+    const raw = import.meta.env.VITE_API_URL
+    const normalized = raw.endsWith('/') ? raw.slice(0, -1) : raw
+    const withApi = normalized.endsWith('/api') ? normalized : `${normalized}/api`
+    console.log('📡 API Mode: Production (from VITE_API_URL)', withApi)
+    return withApi
   }
   
   // Production fallback: Try relative path first (for same-origin deployments)
