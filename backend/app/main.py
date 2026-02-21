@@ -84,7 +84,7 @@ app.add_middleware(
 )
 
 # Include routers
-app.include_router(auth_router, prefix="/api")
+app.include_router(auth_router)
 
 # Global analysis cache
 analysis_cache = {}
@@ -112,6 +112,12 @@ async def shutdown_event():
 @app.get("/", tags=["Health"])
 async def health_check():
     """Health check endpoint"""
+    return {"status": "healthy", "service": "RIFT Money Muling Detection Engine"}
+
+
+@app.get("/api/", tags=["Health"])
+async def health_check_api():
+    """Health check endpoint (API alias for proxy/baseURL=/api setups)"""
     return {"status": "healthy", "service": "RIFT Money Muling Detection Engine"}
 
 
