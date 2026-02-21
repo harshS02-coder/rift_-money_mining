@@ -1,0 +1,16 @@
+[build]
+  builder = "dockerfile"
+  dockerfilePath = "Dockerfile"
+
+[deploy]
+  restartPolicyType = "on_failure"
+  restartPolicyMaxRetries = 3
+
+# Required environment variables – set these in the Railway dashboard:
+#   MONGODB_URL        - MongoDB connection string (e.g. from Railway MongoDB plugin)
+#   MONGODB_DB_NAME    - Database name (default: rift_2026)
+#   SECRET_KEY         - JWT secret key (generate a long random string)
+#   ALLOWED_ORIGINS    - Comma-separated list of allowed CORS origins
+#                        e.g. https://money-muling-six.vercel.app,http://localhost:5174
+#   LLM_API_KEY        - (Optional) OpenAI or Gemini API key for LLM features
+#   LLM_PROVIDER       - (Optional) "openai" or "gemini" (default: openai)
