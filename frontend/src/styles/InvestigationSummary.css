@@ -1,0 +1,117 @@
+.investigation-summary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 12px 24px rgba(102, 126, 234, 0.3);
+  animation: slideInDown 0.4s ease-out;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  max-height: 500px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.investigation-summary h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.investigation-summary.loading {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s infinite;
+}
+
+.investigation-summary.error {
+  background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.summary-content {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 8px;
+  flex: 1;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.summary-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.summary-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.summary-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.summary-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.summary-content p {
+  line-height: 1.6;
+  margin-bottom: 12px;
+  font-size: 0.9em;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.suspects-section,
+.findings-section {
+  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 4px solid rgba(255, 255, 255, 0.4);
+}
+
+.suspects-section h4,
+.findings-section h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 0.95em;
+}
+
+.suspects-section ul,
+.findings-section ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.suspects-section li,
+.findings-section li {
+  margin-bottom: 6px;
+  font-size: 0.85em;
+  word-wrap: break-word;
+}
+
+.skeleton-loader {
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
