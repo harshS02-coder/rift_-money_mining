@@ -83,50 +83,90 @@ Risk Levels:
 ### Project Structure
 
 ```
-rift-hackathon-2026/
+money_muling/
 ├── backend/
 │   ├── app/
-│   │   ├── main.py                 # FastAPI routes & CORS
+│   │   ├── main.py
+│   │   ├── database.py
 │   │   ├── engine/
-│   │   │   ├── graph_builder.py    # NetworkX graph construction
-│   │   │   ├── cycle_detector.py   # DFS cycle detection
-│   │   │   ├── smurf_detector.py   # 72-hr window analysis
-│   │   │   └── shell_detector.py   # Low-txn account detection
+│   │   │   ├── graph_builder.py
+│   │   │   ├── cycle_detector.py
+│   │   │   ├── cycle_detector_v2.py
+│   │   │   ├── cycle_detector_hybrid.py
+│   │   │   ├── cycle_detector_hybrid_optimized.py
+│   │   │   ├── cycle_detector_tarjan.py
+│   │   │   ├── cycle_detector_johnson.py
+│   │   │   ├── smurf_detector.py
+│   │   │   ├── smurf_detector_v2.py
+│   │   │   ├── shell_detector.py
+│   │   │   └── shell_detector_v2.py
+│   │   ├── routes/
+│   │   │   └── auth.py
 │   │   ├── schemas/
-│   │   │   ├── transaction.py      # Pydantic models
-│   │   │   └── results.py          # Output schemas
+│   │   │   ├── transaction.py
+│   │   │   ├── results.py
+│   │   │   └── user.py
+│   │   ├── services/
+│   │   │   ├── auth_service.py
+│   │   │   └── llm_service.py
 │   │   └── utils/
-│   │       └── scoring.py          # Risk scoring logic
-│   ├── tests/                      # Unit tests
-│   ├── requirements.txt
+│   │       ├── auth_dependencies.py
+│   │       ├── jwt_utils.py
+│   │       └── scoring.py
 │   ├── .env
-│   └── venv/                       # Virtual environment
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── railway.toml
+│   ├── requirements.txt
+│   └── test_transactions.csv
 │
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── FileUpload.jsx      # CSV upload
-│   │   │   ├── GraphView.jsx       # D3 visualization
-│   │   │   ├── RingTable.jsx       # Results tables
-│   │   │   └── AccountInfo.jsx     # Account details panel
+│   │   │   ├── FileUpload.jsx
+│   │   │   ├── GraphView.jsx
+│   │   │   ├── RingTable.jsx
+│   │   │   ├── CycleAnalysisPanel.jsx
+│   │   │   ├── AccountInfo.jsx
+│   │   │   ├── InvestigationSummary.jsx
+│   │   │   ├── SuspiciousAccountsList.jsx
+│   │   │   └── icons/
+│   │   ├── context/
+│   │   │   └── AuthContext.jsx
 │   │   ├── services/
-│   │   │   └── api.js              # Axios API client
-│   │   ├── styles/                 # Component CSS
-│   │   ├── App.jsx                 # Main layout
-│   │   ├── index.css               # Global styles
-│   │   └── main.jsx                # Entry point
-│   ├── public/                     # Static assets
+│   │   │   └── api.js
+│   │   ├── styles/
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── dist/
 │   ├── index.html
 │   ├── vite.config.js
+│   ├── tailwind.config.js
+│   ├── postcss.config.js
 │   ├── package.json
-│   └── node_modules/
+│   ├── package-lock.json
+│   ├── .env.example
+│   ├── .env.production
+│   └── money_mining_logo.png
 │
 ├── docs/
-│   └── system_arch.png
-│
-├── .gitignore
-├── README.md                       # This file
-└── run.sh                          # Startup script
+│   └── README.md
+├── public/
+│   └── sample_transactions.csv
+├── test_cases/
+│   └── money-mulling.csv
+├── docker-compose.yml
+├── Dockerfile
+├── railway.toml
+├── railway.json
+├── Procfile
+├── main.py
+├── run.sh
+├── run.bat
+└── README.md
 ```
 
 ## 🚀 Getting Started
@@ -143,7 +183,7 @@ rift-hackathon-2026/
 #### Option 1: Automated (Recommended)
 
 ```bash
-cd rift-hackathon-2026
+cd money_muling
 chmod +x run.sh
 ./run.sh
 ```
